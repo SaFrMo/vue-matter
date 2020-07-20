@@ -132,7 +132,7 @@ export default {
             if (Array.isArray(items)) {
                 items.forEach((item) => World.add(opts.world, item))
             } else {
-                World.add(opts.world, item)
+                World.add(opts.world, items)
             }
         },
         matterMouse: mouse,
