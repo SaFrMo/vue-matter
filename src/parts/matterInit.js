@@ -1,11 +1,13 @@
-export default (opts = {}) => {
+import { Engine, Render } from 'matter-js'
+
+export default function(opts = {}) {
     opts = {
         clear: true,
-        ...opts,
+        ...opts
     }
 
     // clear existing engine & canvas
-    if (opts.clear && this.matter.engine) {
+    if (opts.clear && this.matter && this.matter.engine) {
         Engine.clear(this.matter.engine)
 
         const { canvas } = this.matter.render
@@ -26,7 +28,7 @@ export default (opts = {}) => {
     this.matter.render = Render.create({
         element: document.body,
         engine: this.matter.engine,
-        options: { width, height },
+        options: { width, height }
     })
 
     // run the engine

@@ -1,10 +1,12 @@
-export default (opts = {}) => {
+import { Bodies, World } from 'matter-js'
+
+export default function(opts = {}) {
     // set defaults
     opts = {
         padding: 20,
         world: null,
         canvas: null,
-        ...opts,
+        ...opts
     }
 
     // make sure we have a world
@@ -32,20 +34,20 @@ export default (opts = {}) => {
     const walls = [
         // top
         Bodies.rectangle(halfWidth, halfPadding, width, padding, {
-            isStatic: true,
+            isStatic: true
         }),
         // right
         Bodies.rectangle(width - halfPadding, halfHeight, padding, height, {
-            isStatic: true,
+            isStatic: true
         }),
         // bottom
         Bodies.rectangle(halfWidth, height - halfPadding, width, padding, {
-            isStatic: true,
+            isStatic: true
         }),
         // left
         Bodies.rectangle(halfPadding, halfHeight, padding, height, {
-            isStatic: true,
-        }),
+            isStatic: true
+        })
     ]
     World.add(world, walls)
 
