@@ -1,12 +1,13 @@
 import { Bodies, World } from 'matter-js'
 
-export default function(opts = {}) {
+export default function (opts = {}) {
     // set defaults
     opts = {
         padding: 20,
         world: null,
         canvas: null,
-        ...opts
+        fullscreen: true,
+        ...opts,
     }
 
     // make sure we have a world
@@ -24,7 +25,7 @@ export default function(opts = {}) {
     }
 
     // deconstruct other opts
-    const { padding } = opts
+    const { padding, fullscreen } = opts
     const halfPadding = padding * 0.5
     const { width, height } = canvas
     const halfWidth = width * 0.5
@@ -33,21 +34,45 @@ export default function(opts = {}) {
     // add walls
     const walls = [
         // top
-        Bodies.rectangle(halfWidth, halfPadding, width, padding, {
-            isStatic: true
-        }),
+        Bodies.rectangle(
+            halfWidth,
+            fullscreen ? -halfPadding : padding,
+            width,
+            padding,
+            {
+                isStatic: true,
+            }
+        ),
         // right
-        Bodies.rectangle(width - halfPadding, halfHeight, padding, height, {
-            isStatic: true
-        }),
+        Bodies.rectangle(
+            fullscreen ? width + halfPadding : width - halfPadding,
+            halfHeight,
+            padding,
+            height,
+            {
+                isStatic: true,
+            }
+        ),
         // bottom
-        Bodies.rectangle(halfWidth, height - halfPadding, width, padding, {
-            isStatic: true
-        }),
+        Bodies.rectangle(
+            halfWidth,
+            fullscreen ? height + halfPadding : height - halfPadding,
+            width,
+            padding,
+            {
+                isStatic: true,
+            }
+        ),
         // left
-        Bodies.rectangle(halfPadding, halfHeight, padding, height, {
-            isStatic: true
-        })
+        Bodies.rectangle(
+            fullscreen ? -halfPadding : halfPadding,
+            halfHeight,
+            padding,
+            height,
+            {
+                isStatic: true,
+            }
+        ),
     ]
     World.add(world, walls)
 

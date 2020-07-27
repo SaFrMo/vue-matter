@@ -1,13 +1,13 @@
 import { World } from 'matter-js'
 
-export default function(items, opts = {}) {
+export default function (items, opts = {}) {
     opts = {
         world: this.matter.engine.world,
-        ...opts
+        ...opts,
     }
 
     if (Array.isArray(items)) {
-        items.forEach(item => World.add(opts.world, item))
+        items.forEach((item) => World.add(opts.world, item))
     } else {
         World.add(opts.world, items)
     }

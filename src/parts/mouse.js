@@ -8,7 +8,7 @@ export default function (opts = {}) {
         constraint: {
             stiffness: 0.1,
             render: {
-                visible: true,
+                visible: false,
             },
         },
         ...opts,

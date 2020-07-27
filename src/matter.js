@@ -1,15 +1,17 @@
 import { Engine, Render, World, Bodies } from 'matter-js'
-import { debounce, get } from 'lodash'
+import debounce from 'lodash/debounce'
+import get from 'lodash/get'
 
 import matterMouse from './parts/mouse'
 import matterInit from './parts/matterInit'
 import matterAdd from './parts/matterAdd'
 import matterWalls from './parts/matterWalls'
+import matterDom from './parts/matterDom'
 
 export default {
     data() {
         return {
-            matter: {}
+            matter: {},
         }
     },
     mounted() {
@@ -21,7 +23,7 @@ export default {
         },
         height() {
             return get(this.matter.render, 'canvas.height', -1)
-        }
+        },
     },
     methods: {
         onResize() {
@@ -30,6 +32,7 @@ export default {
         matterInit,
         matterWalls,
         matterAdd,
-        matterMouse
-    }
+        matterMouse,
+        matterDom,
+    },
 }
