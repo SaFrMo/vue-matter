@@ -1,3 +1,5 @@
+**Docs in progress**
+
 **Nuxt**: Copy and paste the contents of `src` to `/mixins`. Then:
 
 ```html
